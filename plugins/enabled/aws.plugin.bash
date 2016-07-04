@@ -1,0 +1,1 @@
+../available/aws.plugin.bash

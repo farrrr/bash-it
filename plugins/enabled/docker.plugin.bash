@@ -1,0 +1,1 @@
+../available/docker.plugin.bash

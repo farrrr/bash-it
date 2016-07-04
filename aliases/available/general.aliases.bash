@@ -6,24 +6,22 @@ alias sl=ls
 alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -al'
-alias l='ls -a'
-alias l1='ls -1'
 
-alias _="sudo"
+OPERATE_SYSTEM=$(uname)
 
-if [ $(uname) = "Linux" ]
-then
-  alias ls="ls --color=auto"
-fi
-which gshuf &> /dev/null
-if [ $? -eq 0 ]
-then
-  alias shuf=gshuf
-fi
+case $OSTYPE in
+    linux*)
+        alias ls='ls -aF --color'
+        alias ll='ls -al --color | less -r'
+        ;;
+    *)
+        alias ls='ls -aFG'
+        alias ll='ls -alG --color | less -r'
+        ;;
+esac
 
-alias c='clear'
-alias k='clear'
-alias cls='clear'
+alias less='less -EmrSw'
+alias top='htop'
 
 alias edit="$EDITOR"
 alias pager="$PAGER"
@@ -32,19 +30,9 @@ alias q='exit'
 
 alias irc="$IRC_CLIENT"
 
-# Language aliases
-alias rb='ruby'
-alias py='python'
-alias ipy='ipython'
-
-# Pianobar can be found here: http://github.com/PromyLOPh/pianobar/
-
-alias piano='pianobar'
-
-alias ..='cd ..'         # Go up one directory
-alias ...='cd ../..'     # Go up two directories
-alias ....='cd ../../..' # Go up three directories
-alias -- -='cd -'        # Go back
+alias cd..='cd ..'         # Go up one directory
+alias cd...='cd ../..'     # Go up two directories
+alias cd....='cd ../../..' # Go up three directories
 
 # Shell History
 alias h='history'

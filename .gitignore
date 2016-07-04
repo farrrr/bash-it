@@ -1,7 +1,6 @@
 .atom-build.json
-*/enabled/*
 .DS_Store
-custom/*
+custom/credentials.plugin.bash
 !custom/example.bash
 .rvmrc
 aliases/custom.aliases.bash

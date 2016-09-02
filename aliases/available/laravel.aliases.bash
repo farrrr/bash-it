@@ -2,6 +2,7 @@ cite 'about-alias'
 about-alias 'laravel artisan abbreviations'
 
 # A list of useful laravel aliases
+alias artisan='php artisan'
 
 # asset
 alias a:apub='php artisan asset:publish'

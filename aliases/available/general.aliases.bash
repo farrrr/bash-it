@@ -1,24 +1,36 @@
 cite about-alias
 about-alias 'general aliases'
 
+if ls --color -d . &> /dev/null
+then
+  alias ls="ls --color=auto"
+elif ls -G -d . &> /dev/null
+then
+  alias ls='ls -G'        # Compact view, show colors
+fi
+
 # List directory contents
 alias sl=ls
-alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -al'
 
-OPERATE_SYSTEM=$(uname)
+# Shortcuts to edit startup files
+alias vbrc="vim ~/.bashrc"
+alias vbpf="vim ~/.bash_profile"
 
-case $OSTYPE in
-    linux*)
-        alias ls='ls -aF --color'
-        alias ll='ls -al --color | less -r'
-        ;;
-    *)
-        alias ls='ls -aFG'
-        alias ll='ls -alG --color | less -r'
-        ;;
-esac
+# colored grep
+# Need to check an existing file for a pattern that will be found to ensure
+# that the check works when on an OS that supports the color option
+if grep --color=auto "a" "${BASH_IT}/"*.md &> /dev/null
+then
+  alias grep='grep --color=auto'
+  export GREP_COLOR='1;33'
+fi
+
+if which gshuf &> /dev/null
+then
+  alias shuf=gshuf
+fi
 
 alias less='less -EmrSw'
 alias top='htop'
@@ -28,7 +40,7 @@ alias pager="$PAGER"
 
 alias q='exit'
 
-alias irc="$IRC_CLIENT"
+alias irc="${IRC_CLIENT:=irc}"
 
 alias cd..='cd ..'         # Go up one directory
 alias cd...='cd ../..'     # Go up two directories
@@ -46,6 +58,33 @@ fi
 # Directory
 alias md='mkdir -p'
 alias rd='rmdir'
+
+# Common misspellings of bash-it
+alias shit='bash-it'
+alias batshit='bash-it'
+alias bashit='bash-it'
+alias batbsh='bash-it'
+alias babsh='bash-it'
+alias bash_it='bash-it'
+alias bash_ti='bash-it'
+
+# Additional bash-it aliases for help/show
+alias bshsa='bash-it show aliases'
+alias bshsc='bash-it show completions'
+alias bshsp='bash-it show plugins'
+alias bshha='bash-it help aliases'
+alias bshhc='bash-it help completions'
+alias bshhp='bash-it help plugins'
+alias bshsch="bash-it search"
+alias bshenp="bash-it enable plugin"
+alias bshena="bash-it enable alias"
+alias bshenc="bash-it enable completion"
+
+# Shorten extract
+alias xt="extract"
+
+# sudo vim
+alias svim="sudo vim"
 
 # Display whatever file is regular file or folder
 catt() {

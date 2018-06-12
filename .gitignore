@@ -11,3 +11,6 @@ plugins/custom.plugins.bash
 .*.un~
 bats
 .idea
+*.sublime-workspace
+*.sublime-project
+enabled/*

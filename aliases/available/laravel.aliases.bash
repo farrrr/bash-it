@@ -4,7 +4,7 @@ about-alias 'laravel artisan abbreviations'
 # A list of useful laravel aliases
 alias artisan='php artisan'
 
-alias laravel="~/.composer/vendor/bin/laravel"
+alias laravel="${HOME}/.composer/vendor/bin/laravel"
 # asset
 alias a:apub='php artisan asset:publish'
 
